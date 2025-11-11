@@ -23,7 +23,7 @@ if not os.path.exists(model_path):
 model = tf.keras.models.load_model(model_path, custom_objects={'mse': MeanSquaredError()}, compile=False)
 
 # Gemini API key setup
-genai.configure(api_key="AIzaSyA-OLKULNEd5sJju0oeM180y6LF_ForJuo")  # Replace with your actual API key
+genai.configure(api_key="your-api-key")  # Replace with your actual API key
 
 # Configure Gemini model
 generation_config = {
@@ -185,3 +185,4 @@ def favicon():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
