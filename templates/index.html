@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crowd Analysis</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <h1>Crowd Analysis</h1>
+        </div>
+    </header>
+    <main>
+        <section id="uploadSection">
+            <div id="dropArea" class="drop-area">
+                <form id="uploadForm" enctype="multipart/form-data" method="post">
+                    <input type="file" name="file" id="fileInput" accept="video/*" required hidden>
+                    <label for="fileInput" class="upload-btn">Choose or Drag & Drop Video</label>
+                </form>
+                <div id="uploadStatus"></div>
+            </div>
+            <div style="display: flex; justify-content: center; margin-top: 15px;">
+                <button type="submit" id="uploadBtn" form="uploadForm" class="upload-btn" style="display: none; width: 200px;">Upload Video</button>
+            </div>
+        </section>
+        <section id="videoSection" style="display:none;">
+            <div style="position:relative; display:inline-block;">
+                <video id="videoPlayer" width="480" controls></video>
+                <canvas id="heatmapOverlay" width="480" height="270" style="position:absolute; left:0; top:0; pointer-events:none;"></canvas>
+            </div>
+            <div id="realtimeStats"></div>
+            <button id="analyzeBtn" type="button">Start Analyzing</button>
+        </section>
+        <section id="resultsSection" style="display:none;">
+            <div id="metrics"></div>
+            <canvas id="densityChart" width="400" height="200"></canvas>
+            <div id="riskLevel"></div>
+            <div id="geminiAnalysis"></div>
+            <div id="recommendations"></div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
